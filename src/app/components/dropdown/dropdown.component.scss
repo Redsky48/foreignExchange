@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.base-list {
+    width: 100%;
+    background: white;
+    z-index: 2;
+    position: relative;
+    top: -2px;
+    border: 1px solid #8080801a;
+    box-shadow: 8px 9px 9px 3px #00000021;
+    height: 230px;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+}
+.base-list::-webkit-scrollbar{
+    display: none;
+}
+.base-item {
+    padding: 5px;
+    background: $baby-blue-eyes;
+    color: white;
+    margin: 5px;
+    border-radius: 3px;
+    opacity: 0.6;
+}
+.base-item:hover {
+    opacity: 1;
+}
+.base-active {
+    font-size: 20px;
+    padding: 7px;
+}
+.dropDown-triangle {
+    position: absolute;
+    right: 8px;
+    top: 0;
+}
+.base-dropdown {
+    position: relative;
+    background: white;
+    width: 180px;
+    height: 35px;
+}

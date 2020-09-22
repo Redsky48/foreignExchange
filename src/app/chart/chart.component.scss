@@ -1,0 +1,50 @@
+
+@import "../variables.scss";
+
+
+.time-rotaded{
+    transform: rotate(-90deg);
+    font-size: 26px;
+    position: absolute;
+    top: 47px;
+    left: -31px;
+}
+.minMax {
+    margin: auto;
+}
+.min,.max {
+    color: white;
+    padding: 9px;
+    font-size: 12px;
+   
+}
+.min{
+    background: $light-pink;
+    margin-right: 10px;
+}
+.max{
+    background: $tea-green;
+}
+.bar-single{
+    fill:$celeste
+}
+.bar-single:hover{
+    fill:$light-pink;
+}
+.contain-line{
+    fill:$baby-blue-eyes
+}
+.hover-info {
+    position: fixed;
+    background: #00000069;
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+}
+.no-priceDiference {
+    font-size: 30px;
+    padding: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}

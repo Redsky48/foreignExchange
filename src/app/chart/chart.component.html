@@ -1,0 +1,45 @@
+
+<div class="hover-info" [style.left]="hoverInfo.x+'px'" [style.top]="hoverInfo.y+'px'" *ngIf="hoverInfo.i!=null">
+   VALUE: {{prices[hoverInfo.i].value}} <br>
+   DATE: {{prices[hoverInfo.i].time}}
+</div>
+<div class="minMax">
+    <div class="min dib">Lowest {{barSettings.minHeight}}</div>
+    <div class="max dib">Highest {{barSettings.maxHeight}}</div>
+
+</div>
+<div class="prices">
+    <div class="no-priceDiference" *ngIf="barSettings.maxHeight==barSettings.minHeight">
+        No price Diference
+    </div>
+    <svg *ngIf="barSettings.maxHeight!=barSettings.minHeight" width="100%" height="500" viewBox="0 0 1920 1280" xmlns="http://www.w3.org/2000/svg">
+        
+            <!-- base lines -->
+            <rect  class="contain-line"  x="66" y="124" width="20.0001" height="820"/>
+            <rect class="contain-line" transform="matrix(5.74609E-14 1 -2.1696 2.64845E-14 1847 925.089)" width="20.0001" height="820"/>
+
+             
+            <!-- price bars -->
+            <g class="bar-group" *ngFor="let price of prices; let i = index;" >
+                <!-- <rect class="bar-single link" fill="#6666CC" (mouseenter)="barOnHoverIndex=i" [attr.x]="137+(i*(barSettings.width+barSettings.padding))" [attr.y]="((chartheight+120) -generateHight(price.value))" [attr.width]="this.barSettings.width" [attr.height]="generateHight(price.value)"/> -->
+
+                <rect class="bar-single link" fill="#6666CC" (mousemove)=" barHoverEvent($event,i)" (mouseleave)="hoverInfo.i=null" [attr.x]="137+(i*(barSettings.width+barSettings.padding))" [attr.y]="((-120)+generateHight(price.value))*-1" [attr.width]="this.barSettings.width" [attr.height]="5+chartheight+generateHight(price.value)"/>
+               <!-- <text *ngIf="i==barOnHoverIndex" [attr.x]="150+(i*(barSettings.width+barSettings.padding))" [attr.y]="((chartheight+100)-generateHight(price.value))" fill="black" font-weight="normal" font-size="21.9768px" font-family="Arial"> {{price.value.toFixed(2)}}</text>  -->
+                <foreignObject *ngIf="i % Math.floor(prices.length/100*10)  ===0" [attr.x]="150+(i*(barSettings.width+barSettings.padding))" [attr.y]="970" width="150" height="150">
+                    <div class="time-rotaded" xmlns="http://www.w3.org/1999/xhtml">
+                        {{price.time}}
+                    </div>
+                  </foreignObject>
+
+           
+            </g>
+        
+
+            <text x="73" y="993"  fill="black" font-weight="normal" font-size="32.0001px" font-family="Arial">TIME</text>
+            <g transform="matrix(2.64845E-14 -1 1 2.64845E-14 -493.545 1905.72)">
+             <text x="960" y="540"  fill="black" font-weight="normal" font-size="32.0001px" font-family="Arial">PRICE</text>
+            </g>
+           
+    </svg>
+
+</div>
